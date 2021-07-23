@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cash Register Manager | VanillaJS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+
+  <body>
+    <h1><span>₹</span> CASH REGISTER MANAGER</h1>
+    <form action="#">
+      <label for="bill-amt">
+        Bill Amount
+        <input
+          type="number"
+          min="1"
+          name="bill-amt"
+          id="bill-amt"
+          placeholder="Enter bill amount"
+          required
+        />
+      </label>
+      <button class="btn-submit" type="button">Submit</button>
+      <label class="label-cash-given hide" for="cash-given">
+        Cash given
+        <input
+          type="number"
+          min="1"
+          name="cash-given"
+          id="cash-given"
+          placeholder="Enter cash given"
+          required
+        />
+      </label>
+      <button class="btn-calculate hide" type="submit">
+        Calculate
+      </button>
+    </form>
+    <p class="message-container hide"></p>
+    <table class="hide">
+      <tr>
+        <th>Note</th>
+        <th>Number of notes to return</th>
+      </tr>
+      <tr>
+        <td>₹2000</td>
+        <td class="number-of-notes"></td>
+      </tr>
+      <tr>
+        <td>₹500</td>
+        <td class="number-of-notes"></td>
+      </tr>
+      <tr>
+        <td>₹100</td>
+        <td class="number-of-notes"></td>
+      </tr>
+      <tr>
+        <td>₹50</td>
+        <td class="number-of-notes"></td>
+      </tr>
+      <tr>
+        <td>₹20</td>
+        <td class="number-of-notes"></td>
+      </tr>
+      <tr>
+        <td>₹10</td>
+        <td class="number-of-notes"></td>
+      </tr>
+      <tr>
+        <td>₹5</td>
+        <td class="number-of-notes"></td>
+      </tr>
+      <tr>
+        <td>₹1</td>
+        <td class="number-of-notes"></td>
+      </tr>
+    </table>
+    <img class="graphic" src="/" alt="" />
+    <audio
+      class="auido-cash-register"
+      src="./src/audio/CashRegister.mp3"
+    ></audio>
+    <script src="src/index.js"></script>
+  </body>
+</html>
