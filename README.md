@@ -1,2 +1,3 @@
 # VJS-cash-register-manager
-Created with CodeSandbox
+
+[Live project](https://t31zs.csb.app/)
