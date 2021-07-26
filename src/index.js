@@ -17,7 +17,8 @@ form.addEventListener("submit", (e) => e.preventDefault());
 submitBtn.addEventListener("click", () => {
   if (
     billAmtInputField.value !== "" &&
-    parseInt(billAmtInputField.value, 10) !== 0
+    parseInt(billAmtInputField.value, 10) > 0 &&
+    Number.isInteger(parseFloat(billAmtInputField.value))
   ) {
     messageContainer.innerText = "submitting...";
     messageContainer.classList.remove("hide");
@@ -38,9 +39,11 @@ submitBtn.addEventListener("click", () => {
 calculateBtn.addEventListener("click", () => {
   if (
     billAmtInputField.value !== "" &&
-    parseInt(billAmtInputField.value, 10) !== 0 &&
+    parseInt(billAmtInputField.value, 10) > 0 &&
     cashGivenInputField.value !== "" &&
-    parseInt(cashGivenInputField.value, 10) !== 0
+    parseInt(cashGivenInputField.value, 10) > 0 &&
+    Number.isInteger(parseFloat(billAmtInputField.value)) &&
+    Number.isInteger(parseFloat(cashGivenInputField.value))
   ) {
     const totalBillAmount = parseInt(billAmtInputField.value, 10);
     const totalCashGiven = parseInt(cashGivenInputField.value, 10);
@@ -85,7 +88,8 @@ calculateBtn.addEventListener("click", () => {
     }
   } else if (
     billAmtInputField.value === "" ||
-    parseInt(billAmtInputField.value, 10) === 0
+    parseInt(billAmtInputField.value, 10) <= 0 ||
+    Number.isInteger(parseFloat(billAmtInputField.value) === false)
   ) {
     graphic.setAttribute("src", "/");
     table.classList.add("hide");
