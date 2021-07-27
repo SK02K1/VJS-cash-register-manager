@@ -10,7 +10,6 @@ const cashGivenInputField = document.querySelector("#cash-given");
 const calculateBtn = document.querySelector(".btn-calculate");
 const messageContainer = document.querySelector(".message-container");
 const graphic = document.querySelector(".graphic");
-let isBillAmtSubmittedPreviously = false;
 
 form.addEventListener("submit", (e) => e.preventDefault());
 
@@ -21,18 +20,16 @@ submitBtn.addEventListener("click", () => {
     Number.isInteger(parseFloat(billAmtInputField.value))
   ) {
     messageContainer.innerText = "submitting...";
-    messageContainer.classList.remove("hide");
     setTimeout(() => {
       labelCashGiven.classList.remove("hide");
       calculateBtn.classList.remove("hide");
       submitBtn.classList.add("hide");
       messageContainer.innerText = "";
-      messageContainer.classList.add("hide");
-      isBillAmtSubmittedPreviously = true;
+      submitBtn.setAttribute("type", "button");
+      calculateBtn.setAttribute("type", "submit");
     }, 800);
   } else {
     messageContainer.innerText = "Enter valid bill amount";
-    messageContainer.classList.remove("hide");
   }
 });
 
@@ -51,15 +48,13 @@ calculateBtn.addEventListener("click", () => {
       graphic.setAttribute("src", "/");
       table.classList.add("hide");
       messageContainer.innerText = "no need to return anything";
-      messageContainer.classList.remove("hide");
     } else if (totalCashGiven < totalBillAmount) {
+      table.classList.add("hide");
       messageContainer.innerText = "Cash given is less than total bill amount!";
-      messageContainer.classList.remove("hide");
       graphic.setAttribute(
         "src",
         "https://memes.co.in/memes/update/uploads/2021/04/mirzapur_memes-20210420-0001-950x500.jpg"
       );
-      table.classList.add("hide");
     } else {
       const totalAmtToBeReturn = functions.getTotalAmtToBeReturn(
         totalBillAmount,
@@ -79,7 +74,6 @@ calculateBtn.addEventListener("click", () => {
       table.classList.add("hide");
       graphic.setAttribute("src", "/");
       messageContainer.innerText = "calculating...";
-      messageContainer.classList.remove("hide");
       setTimeout(() => {
         messageContainer.innerText = "result below 👇";
         table.classList.remove("hide");
@@ -89,16 +83,14 @@ calculateBtn.addEventListener("click", () => {
   } else if (
     billAmtInputField.value === "" ||
     parseInt(billAmtInputField.value, 10) <= 0 ||
-    Number.isInteger(parseFloat(billAmtInputField.value) === false)
+    Number.isInteger(parseFloat(billAmtInputField.value)) === false
   ) {
     graphic.setAttribute("src", "/");
     table.classList.add("hide");
     messageContainer.innerText = "Enter valid bill amount";
-    messageContainer.classList.remove("hide");
-  } else if (isBillAmtSubmittedPreviously === true) {
+  } else {
     graphic.setAttribute("src", "/");
     table.classList.add("hide");
     messageContainer.innerText = "Enter valid cash given value";
-    messageContainer.classList.remove("hide");
   }
 });
